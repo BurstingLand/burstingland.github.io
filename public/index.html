@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>test</title>
+</head>
+<body>
+      <script src="//jsblocks.com/jsblocks/blocks.js"></script>
+
+<script>
+  var App = blocks.Application({
+  history: 'pushState'
+});
+
+App.View('Home', {
+  // options object contains all properties that define the View behavior
+  options: {
+    // enabling the View routing and setting it to the root page
+    // for a www.example.com the root is the same www.example.com
+    route: '/'
+  }
+});
+
+App.View('Contacts', {
+  options: {
+    // enabling the View routing and setting to a Contacts route
+    // for a www.example.com the route will be found under www.example.com/#Contacts
+    route: 'Contacts'
+  },
+
+  init: function () {
+
+  }
+});
+
+App.View('Product', {
+  options: {
+
+    route: 'Product/{{type}}'
+  },
+
+  // callback called when the view have been successfully
+  routed: function () {
+
+  }
+});
+  </script>
+  
+<a href="#" data-query="navigateTo(Home)">Home</a>
+<a href="#" data-query="navigateTo(Contacts)">Contact Us</a>
+
+<div data-query="view(Home)">
+  Home
+</div>
+  
+<div data-query="view(Contacts)">
+  Contacts
+</div>
+  
+<div data-query="view(Product)">
+  Product {{route.type}}
+</div>
+  
+</body>
+</html>
